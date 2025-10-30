@@ -1,6 +1,35 @@
-# docker_lec_massif
+# MASSIF Docker Development Environment
 
-Docker development container for MASSIF (Modeling And Simulation of fault Stability in subsurface fluid Injection at Faults) lectures.
+> **Dockerized Development Environment for Modeling and Simulation of Fault Stability in Subsurface Fluid Injection**
+
+This repository provides a ready-to-use Docker development container for the [lec_massif](https://github.com/compgeo-mox/lec_massif) course. The container includes all necessary dependencies, tools, and pre-configured VS Code extensions to work with the computational laboratories on fault mechanics and subsurface fluid flow.
+
+## About the Course
+
+This course introduces mathematical and numerical modeling of fault stability in subsurface settings influenced by fluid injection and production. The computational laboratories cover:
+
+- **Darcy's Equation**: Flow in porous media with finite element/volume discretizations
+- **Linear Elasticity**: Stress and displacement field analysis in rocks
+- **Biot's Poroelastic Equations**: Coupled hydro-mechanical problems
+- **Decoupling Strategies**: Fixed-strain and fixed-stress methods for poroelasticity
+- **Contact Mechanics**: Fault slip criteria and Coulomb failure analysis
+- **Fault Stability Assessment**: Methods for evaluating fault activation risk
+
+The laboratories are implemented as Jupyter notebooks using modern Python scientific computing libraries, including [PorePy](https://github.com/pmgbergen/porepy) and [PyGeoN](https://github.com/compgeo-mox/pygeon).
+
+## Why Use This Docker Container?
+
+This Docker environment eliminates installation complexity and ensures reproducibility by providing:
+
+✅ **Pre-configured Python 3.13 environment** with Miniconda  
+✅ **Automatic installation** of the lec_massif package and all dependencies  
+✅ **Jupyter Notebook support** for interactive computing  
+✅ **VS Code integration** with Python, Jupyter, and formatting extensions  
+✅ **LaTeX support** for mathematical typesetting  
+✅ **Cross-platform compatibility** (Linux, macOS, Windows via WSL2)  
+✅ **Consistent development environment** across all machines  
+
+No more "it works on my machine" problems!
 
 ## Prerequisites
 
@@ -125,6 +154,49 @@ The container exposes port 8888 for Jupyter:
 
 The container automatically clones and installs the `lec_massif` package in development mode. The package is located at `/home/user/lec_massif` inside the container.
 
+### Running the Laboratory Notebooks
+
+1. Navigate to the lab directory:
+   ```bash
+   cd /home/user/lec_massif/lab
+   ```
+
+2. Open any lab notebook in VS Code (e.g., `lab1/ex1.ipynb`)
+
+3. VS Code will automatically detect the Jupyter kernel and allow you to run cells interactively
+
+4. Follow the instructions in each notebook and run cells sequentially
+
+### Visualizing Results
+
+Many labs export results as `.vtu` files for visualization:
+
+- Files are typically saved in the working directory
+- Use [ParaView](https://www.paraview.org/) to open and visualize `.vtu` files
+- ParaView can be installed on your host machine (not in the container)
+
+### Key Dependencies
+
+The environment includes:
+
+- **PorePy**: Framework for simulation of flow and transport in fractured and porous media
+- **PyGeoN**: Geometric tools and discretization methods for subsurface modeling
+- **NumPy/SciPy**: Numerical computing and linear algebra
+- **Matplotlib**: Plotting and visualization
+- **Jupyter**: Interactive notebooks
+
+## Learning Outcomes
+
+By completing the laboratories in this environment, you will:
+
+- Understand mathematical formulations of Darcy's equation, linear elasticity, and Biot's poroelastic equations
+- Discretize and solve PDEs using finite element and finite volume methods
+- Analyze coupled hydro-mechanical effects on fault stress changes
+- Apply contact mechanics and fault slip criteria (Coulomb failure)
+- Assess stability for fault activation in fluid injection scenarios
+- Develop practical skills in scientific computing with Python
+- Master debugging, validation, and visualization techniques
+
 ## Troubleshooting
 
 ### Container fails to build
@@ -154,10 +226,29 @@ docker_lec_massif/
 └── README.md
 ```
 
+## Related Resources
+
+- **Main Course Repository**: [compgeo-mox/lec_massif](https://github.com/compgeo-mox/lec_massif)
+- **PorePy Documentation**: [github.com/pmgbergen/porepy](https://github.com/pmgbergen/porepy)
+- **PyGeoN Documentation**: [github.com/compgeo-mox/pygeon](https://github.com/compgeo-mox/pygeon)
+- **ParaView**: [www.paraview.org](https://www.paraview.org/)
+
+## Support
+
+For issues related to:
+- **Docker container setup**: Open an issue in this repository
+- **Course content and laboratories**: Open an issue in [lec_massif](https://github.com/compgeo-mox/lec_massif/issues)
+- **VS Code Dev Containers**: Consult the [official documentation](https://code.visualstudio.com/docs/devcontainers/containers)
+
 ## Contributing
 
-Feel free to open issues or submit pull requests to improve the development environment.
+Improvements to the Docker environment are welcome! Feel free to:
+- Report bugs or issues
+- Suggest enhancements
+- Submit pull requests
 
 ## License
 
-See the [LICENSE](LICENSE) file for details.
+This project is licensed under the GPL-3.0 License - see the [LICENSE](LICENSE) file for details.
+
+The [lec_massif](https://github.com/compgeo-mox/lec_massif) course materials are also licensed under GPL-3.0.

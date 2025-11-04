@@ -1,6 +1,6 @@
 # Use the official Ubuntu image as a base
-# FROM --platform=linux/amd64 ubuntu:latest
-FROM --platform=linux/amd64 registry.cn-hangzhou.aliyuncs.com/library/ubuntu:latest
+FROM --platform=linux/amd64 ubuntu:latest
+# FROM --platform=linux/amd64 registry.cn-hangzhou.aliyuncs.com/library/ubuntu:latest
 
 # Set the working directory
 ARG USERNAME=user

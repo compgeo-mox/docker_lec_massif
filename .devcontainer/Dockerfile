@@ -12,15 +12,12 @@ WORKDIR ${HOME}
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Update the package list and install sudo
-RUN sed -i 's/^# deb/deb/' /etc/apt/sources.list && \
-    apt-get update && \
-    apt-get install -y \
+RUN sed -i 's/^# deb/deb/' /etc/apt/sources.list
+RUN apt-get update -y
+RUN apt-get install -y \
     wget git bash libc6 apt-utils build-essential gfortran bzip2 ca-certificates \
-    libglu1-mesa ffmpeg libsm6 libxext6 libxrender1 libxcursor1 \
-    texlive-latex-base texlive-fonts-recommended \
-    texlive-fonts-extra texlive-latex-extra dvipng && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    libglu1-mesa ffmpeg libsm6 libxext6 libxrender1 libxcursor1 
+RUN apt-get install -y libxft2 libfontconfig1
 
 # Use bash shell instead
 SHELL ["/bin/bash", "-c"]
@@ -64,7 +61,7 @@ RUN cd ${HOME} && git clone https://github.com/compgeo-mox/lec_massif.git
 RUN cd ${HOME}/lec_massif && pip install -e .
 
 # Set the default command to start the environment
-CMD [ "/bin/bash", "-c", "source activate py3" ]
+CMD [ "/bin/bash", "-c", ". activate py3" ]
 
 # DEBUG section
 # To stop all running containers
